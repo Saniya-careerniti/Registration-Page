@@ -1,5 +1,9 @@
 .registration-form {
     background-color: #FFF7DF;
+    width:60%;
+    margin: auto;
+    padding-bottom: 50px;
+    padding-top: 30px;
     
 }
 
@@ -8,10 +12,11 @@
   
     text-align: center;
     margin-right: 10px;
+    margin: auto;
 }
 
 .header-title {
-    width: 25%;
+    width: 40%;
     height: 77px;
     border-radius: 10px;
     border: 0.5px solid #000;
@@ -19,7 +24,7 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin: auto;
     overflow: hidden;
-    margin-top: 10px;
+    margin-bottom: 20px;
     
 }
 
@@ -28,22 +33,130 @@
     padding-bottom: 13;
     text-transform: uppercase;
 }
+ 
+.header p {
+  margin-top: 0px;
 
+}
+.reg{
+  font-size:larger;
+  font-weight: bold;
+}
 .student-info {
     padding: 10px;
+}
 
+.student-info {
+  background-color: #ED8721;
+  width: 60%;
+  margin-top:30px;
+  color: #ffffff;
+  font-size: medium;
+}
+
+#student-info-fields{
+  margin-top: 15px;
+}
+
+.input {
+
+  width: 60%;
+  float: right;
+  background-color:lightgray;
+  border: none;
+  height: 20px;
 }
 
 
+#radio {
+ margin-left: 135px;
+}
 
+.dropdown{
+  
+  width: 60%;
+  margin-left: 20px;
+  margin-top: 25px;
+  background-color:lightgray;
+  border: none;
+  height: 25px;
+}
+
+.services {
+  margin-top: 20px;
+ text-align: center;
+ font-weight: bold;
+
+}
+
+.service-title{
+  font-weight: bold;
+}
+.remark{
+  width: 100%;
+  background-color:lightgray;
+  border: none;
+  height: 25px;
+  margin-top: 10px;
+ 
+  
+}
+
+.additional{
+  width: 84%;
+  background-color:lightgray;
+  border: none;
+  height: 25px;
+  margin-top: 10px;
+  margin-left: 13px;
+  
+}
+
+.additional-remarks{
+  width: 80%;
+  background-color:lightgray;
+  border: none;
+  height: 25px;
+  margin-top: 10px;
+  margin-left: 13px; 
+}
+
+.input-date {
+  background-color:lightgray;
+  border: none;
+  height: 20px;
+}
+.total {
+  margin-left: 63%;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.total input{
+  background-color: lightgray;
+  border: none;
+  height: 25px;
+  width: 84.2%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.signature {
+  float: right;
+  border: none;
+  height: 50px;
+  width: 20%;
+  margin-bottom: 10px;
+}
 
 .container {
     max-width: 1349px;
     margin-left: auto;
     margin-right: auto;
-    padding-left:10px;
-    padding-right: 10px;
+    padding-left:30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
 }
+
 
 @media (max-width: 1536px) {
     .container {
