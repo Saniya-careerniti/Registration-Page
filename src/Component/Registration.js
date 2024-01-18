@@ -5,6 +5,7 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
+import Button from '@mui/material/Button';
 import "../assets/cssFiles/Registration.css";
 function Registration() {
   return (
@@ -142,12 +143,13 @@ function Registration() {
         <section className="container">
           <div className="student-info">* Services</div>
           Admission Process:
-          <select className="dropdown">
+          <select  className="dropdown">
             <option>Maharashtra Medical Admission Process</option>
             <option>All India Medical Admission Process</option>
             <option>AACCC (All India Ayush) Admission Process</option>
             <option>Maharashtra Ayush Admission Process</option>
-            <option>Veterinary Admission Process</option>
+            <option>Maharashtra Veterinary Admission Process</option>
+            <option>All India Veterinary Admission Process</option>
             <option>Karnataka Medical Admission Process</option>
             <option>Karnataka Ayush Admission Process</option>
             <option>Other States Medical Admission process</option>
@@ -382,7 +384,13 @@ function Registration() {
         Signature of the student and, if the student is a minor, a parent or guardian:
         <input type="text" className="signature"></input>
         </section>
-       
+       <section className="container">
+       <div id="btns">
+       <Button variant="contained" id="submit-btn">Submit</Button>
+       <Button variant="contained" id="print-btn">Print</Button>
+       </div>
+
+       </section>
       </div>
     </>
   );

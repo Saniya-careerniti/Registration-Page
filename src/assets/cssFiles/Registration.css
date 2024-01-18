@@ -148,6 +148,34 @@
   margin-bottom: 10px;
 }
 
+#submit-btn {
+  text-transform: capitalize;
+  background-color: #ED8721;
+  color: #ffffff;
+  border-radius: 10px; 
+  margin-left: 20px;
+  width: 30%;
+  margin-top: 20px;
+}
+
+#print-btn {
+  text-transform: capitalize;
+  background-color: #ED8721;
+  color: #ffffff;
+  border-radius: 10px; 
+  margin-left: 20px;
+  width: 30%;
+  margin-top: 20px;
+
+}
+
+#btns {
+  margin-top: 20px;
+  margin-left: 30%;
+  overflow: hidden;
+
+  
+}
 .container {
     max-width: 1349px;
     margin-left: auto;
