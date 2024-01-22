@@ -11,13 +11,13 @@
 .header {
   
     text-align: center;
-    margin-right: 10px;
+    margin-right: 5%;
     margin: auto;
 }
 
 .header-title {
     width: 40%;
-    height: 77px;
+    height: 50px;
     border-radius: 10px;
     border: 0.5px solid #000;
     background: #ED8721;
@@ -30,8 +30,8 @@
 
 .header-title h1{
     text-align: center;
-    padding-bottom: 13;
     text-transform: uppercase;
+  
 }
  
 .header p {
@@ -39,8 +39,19 @@
 
 }
 .reg{
-  font-size:larger;
+  font-size:medium;
   font-weight: bold;
+  height: 30px;
+  width: 26%;
+  border-radius: 10px;
+  border: 0.5px solid #000;
+  background: #ED8721;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 3px
+}
+
+.header-email{
+   padding-right: 2%;
 }
 .student-info {
     padding: 10px;
@@ -60,7 +71,7 @@
 
 .input {
 
-  width: 60%;
+  width: 55%;
   float: right;
   background-color:lightgray;
   border: none;
@@ -69,18 +80,23 @@
 
 
 #radio {
- margin-left: 135px;
+ margin-left: 25%;
 }
 
-.dropdown{
+.dropdown {
+  padding: 10px;
+  height: 30px;
+  width:80%;
+  background-color: lightgrey;
   
-  width: 60%;
-  margin-left: 20px;
-  margin-top: 25px;
-  background-color:lightgray;
-  border: none;
-  height: 25px;
 }
+.Admission-pro{
+  padding-right: 10px;
+}
+.multi-select{
+  margin-top: 20px;
+}
+
 
 .services {
   margin-top: 20px;
@@ -103,7 +119,7 @@
 }
 
 .additional{
-  width: 84%;
+  width: 79%;
   background-color:lightgray;
   border: none;
   height: 25px;
@@ -113,7 +129,7 @@
 }
 
 .additional-remarks{
-  width: 80%;
+  width: 79%;
   background-color:lightgray;
   border: none;
   height: 25px;
@@ -121,24 +137,36 @@
   margin-left: 13px; 
 }
 
-.input-date {
-  background-color:lightgray;
-  border: none;
-  height: 20px;
+
+.invoice {
+  margin-top: 20px;
+ text-align: center;
+ font-weight: bold;
+
 }
-.total {
-  margin-left: 63%;
-  margin-bottom: 10px;
-  font-weight: bold;
+.input-date {
+  border-radius: 10px;
+  border: 1px solid black;
+  height: 25px;
+  width: 100%;
+  margin-top: 10px;
+  font-size: large;
 }
 
-.total input{
+.total {
+  margin-left: 70%;
+  margin-bottom: 10px;
+  font-weight: bold;
+  padding-top: 40px;
+}
+
+.total-input{
   background-color: lightgray;
   border: none;
   height: 25px;
-  width: 84.2%;
+  width: 68%;
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 10%;
 }
 .signature {
   float: right;
@@ -194,7 +222,10 @@
     font-size: 7;
 
     }
-  
+    .header-title h1{
+      font-size: 130% ;
+    }
+
   }
 
   @media (max-width: 1280px) {
@@ -209,10 +240,23 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width :930px){
+    .container {
+      max-width: 700px;
+    }
+    .header-title h1{
+      font-size: 100% ;
+  }
+
+  
+  }
+  @media (max-width: 708px) {
     .container {
       max-width: 640px;
     }
+    .header-title h1{
+      font-size: 93% ;
+  }
   }
 
   @media (max-width: 640px) {
