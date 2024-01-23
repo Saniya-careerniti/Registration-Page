@@ -36,6 +36,7 @@ function Registration() {
             </Grid>
           </div>
         </section>
+        
         <hr/>
         {/* <StudentInfo/>
         <hr/>

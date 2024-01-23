@@ -6,8 +6,10 @@ import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { Checkbox, Grid } from "@mui/material";
 import Invoice from "./Invoice";
+
 function Services() {
-    const [selectedService, setSelectedService] = useState([]);
+
+  const [selectedService, setSelectedService] = useState([]);
   const [serviceName, setServiceName] = useState([]);
 
   const services = [
