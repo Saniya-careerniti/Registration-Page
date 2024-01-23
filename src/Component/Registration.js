@@ -37,10 +37,10 @@ function Registration() {
           </div>
         </section>
         <hr/>
-        <StudentInfo/>
+        {/* <StudentInfo/>
         <hr/>
-        <Services/>
-        <hr/>
+        <Services/> */}
+
         <Submit/>
        
 

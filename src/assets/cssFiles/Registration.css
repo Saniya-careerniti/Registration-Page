@@ -17,7 +17,7 @@
 
 .header-title {
     width: 40%;
-    height: 50px;
+    height: 85px;
     border-radius: 10px;
     border: 0.5px solid #000;
     background: #ED8721;
@@ -39,7 +39,7 @@
 
 }
 .reg{
-  font-size:medium;
+  font-size:90%;
   font-weight: bold;
   height: 30px;
   width: 26%;
