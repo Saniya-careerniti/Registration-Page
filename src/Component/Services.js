@@ -27,6 +27,7 @@ function Services() {
     "BITSAT Admission Process",
     "Other Private Institutes Admission Process",
   ];
+  
   const handleChange = (event) => {
     const {
       target: { value },

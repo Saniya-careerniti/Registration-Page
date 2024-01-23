@@ -31,7 +31,7 @@ function StudentInfo({ onDataUpdate }) {
   useEffect(() => {
     // This effect will run whenever any field in studentInfo changes
     onDataUpdate(studentInfo);
-  }, [studentInfo, onDataUpdate]);
+  }, [studentInfo]);
 
   return (
     <>
