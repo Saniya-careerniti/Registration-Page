@@ -1,16 +1,27 @@
-import React,{useEffect,useState} from "react";
+import React, { useState, useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import Chip from "@mui/material/Chip";
-import Box from "@mui/material/Box";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import { Checkbox, Grid } from "@mui/material";
 import Invoice from "./Invoice";
 
-function Services() {
+const initialServiceInfo = {
+  Admission_Process: [],
+  Opted: {
+    Career_Guidance: { Opt: false, Delivered: false, Remark: "" },
+    Career_Counselling: { Opt: false, Delivered: false, Remark: "" },
+    Entrance_Guidance: { Opt: false, Delivered: false, Remark: "" },
+    Entrance_Counselling: { Opt: false, Delivered: false, Remark: "" },
+    Admission_Guidance: { Opt: false, Delivered: false, Remark: "" },
+    Admission_Counselling: { Opt: false, Delivered: false, Remark: "" },
+  },
+  Additional_Process: "",
+};
 
+function Services() {
   const [selectedService, setSelectedService] = useState([]);
-  const [serviceName, setServiceName] = useState([]);
+  const [serviceInfo, setServiceInfo] = useState(initialServiceInfo);
 
   const services = [
     "Maharashtra Medical Admission Process",
@@ -27,6 +38,7 @@ function Services() {
     "BITSAT Admission Process",
     "Other Private Institutes Admission Process",
   ];
+
   const handleChange = (event) => {
     const {
       target: { value },
@@ -35,25 +47,47 @@ function Services() {
   };
 
   useEffect(() => {
-    setServiceName(selectedService);
+    setServiceInfo((prevServiceInfo) => ({
+      ...prevServiceInfo,
+      Admission_Process: selectedService,
+    }));
+    console.log(serviceInfo)
   }, [selectedService]);
- 
-    return ( 
-        <>
-        <section className="container">
-          <div className="student-info">* Services</div>
-          <div className="multi-select">
-           <span  className="Admission-pro"> Admission Process:</span>
+
+  const handleCheckboxChange = (category, property, checked) => {
+    setServiceInfo((prevServiceInfo) => ({
+      ...prevServiceInfo,
+      Opted: {
+        ...prevServiceInfo.Opted,
+        [category]: {
+          ...prevServiceInfo.Opted[category],
+          [property]: checked,
+        },
+      },
+    }));
+  };
+
+  const handleInputChange = (property, value) => {
+    setServiceInfo((prevServiceInfo) => ({
+      ...prevServiceInfo,
+      Additional_Process: value,
+    }));
+  };
+
+  return (
+    <>
+      <section className="container">
+        <div className="student-info">* Services</div>
+        <div className="multi-select">
+          <span className="Admission-pro"> Admission Process:</span>
           <Select
-           className="dropdown"
+            className="dropdown"
             labelId="demo-multiple-chip-label"
             id="demo-multiple-chip"
             multiple
             value={selectedService}
             onChange={handleChange}
             input={<OutlinedInput label="Name" />}
-            
-              
           >
             {services.map((name) => (
               <MenuItem key={name} value={name}>
@@ -61,118 +95,66 @@ function Services() {
               </MenuItem>
             ))}
           </Select>
+        </div>
 
-       
-          </div>
-          <div className="services">
-            <Grid container spacing={4}>
-              <Grid item xs={4}></Grid>
-              <Grid item xs={1}>
-                Opt
-              </Grid>
-              <Grid item xs={1}>
-                Delivered
-              </Grid>
-              <Grid item xs={6}>
-                Remark
-              </Grid>
-            </Grid>
-          </div>
+        <div className="services">
           <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">1.Career Guidance</span>
+            <Grid item xs={4}></Grid>
+            <Grid item xs={1}>
+              Opt
             </Grid>
             <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox/>
+              Delivered
             </Grid>
             <Grid item xs={6}>
-              <input type="text" className="remark"></input>
+              Remark
             </Grid>
           </Grid>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">2.Career Counselling</span>
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={6}>
-              <input type="text" className="remark"></input>
-            </Grid>
-          </Grid>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">3.Entrance Guidance</span>
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={6}>
-              <input type="text" className="remark"></input>
-            </Grid>
-          </Grid>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">4.Entrance Counselling</span>
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
+        </div>
 
-            <Grid item xs={6}>
-              <input type="text" className="remark"></input>
-            </Grid>
-          </Grid>
-          <Grid container spacing={4}>
+        {Object.entries(serviceInfo.Opted).map(([category, details], index) => (
+          <Grid container spacing={4} key={index}>
             <Grid item xs={4}>
-              <span className="service-title">5.Admission Guidance</span>
+              <span className="service-title">{index + 1}.{category}</span>
             </Grid>
             <Grid item xs={1}>
-              <Checkbox />
+              <Checkbox
+                checked={details.Opt}
+                onChange={(e) => handleCheckboxChange(category, "Opt", e.target.checked)}
+              />
             </Grid>
             <Grid item xs={1}>
-              <Checkbox />
+              <Checkbox
+                checked={details.Delivered}
+                onChange={(e) => handleCheckboxChange(category, "Delivered", e.target.checked)}
+              />
             </Grid>
-
             <Grid item xs={6}>
-              <input type="text" className="remark"></input>
+              <input
+                type="text"
+                className="remark"
+                value={details.Remark}
+                onChange={(e) => handleCheckboxChange(category, "Remark", e.target.value)}
+              ></input>
             </Grid>
           </Grid>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">6.Admission Counselling</span>
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
+        ))}
 
-            <Grid item xs={6}>
-              <input type="text" className="remark"></input>
-            </Grid>
-          </Grid>
+        <div>
           Additional Process:
-          <input type="text" className="additional"></input>
-        </section>
-        <hr/>
-        <Invoice service={serviceName}/>
-        </>
-        
-     );
+          <input
+            type="text"
+            className="additional"
+            value={serviceInfo.Additional_Process}
+            onChange={(e) => handleInputChange("Additional_Process", e.target.value)}
+          ></input>
+        </div>
+      </section>
+
+      <hr />
+      <Invoice service={serviceInfo.Admission_Process} />
+    </>
+  );
 }
 
 export default Services;

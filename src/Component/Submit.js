@@ -1,14 +1,99 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import StudentInfo from "./StudentInfo";
 import Services from "./Services";
 import Invoice from "./Invoice";
+
+
 function Submit() {
-  const [formData, setFormData] = useState({
-    Stud_info: {},
+  
+  // 1st feild
+  const currentDate = new Date().toLocaleDateString();
+  
+  // 2nd feild
+  const currentAppCount = 1;  // TODO: get this from the database
+
+  // 3rd feild -> StudentInfo
+
+  // 4th feild -> Services
+  const [serviceInfo, setServiceInfo] = useState({
+    Admission_Process: [],
+    Opted : {
+      Career_Guidance: {
+        Opt : false,
+        Delivered : false,
+        Remark : ""
+      },
+
+      Career_Counselling: {
+        Opt : false,
+        Delivered : false,
+        Remark : ""
+      },
+
+      Entrance_Guidance: {
+        Opt : false,
+        Delivered : false,
+        Remark : ""
+      },
+
+      Entrance_Counselling: {
+        Opt : false,
+        Delivered : false,
+        Remark : ""
+      },
+
+      Admission_Guidance: {
+        Opt : false,
+        Delivered : false,
+        Remark : ""
+      },
+
+      Admission_Counselling: {
+        Opt : false,
+        Delivered : false,
+        Remark : ""
+      }, 
+    },
+
+    Additional_Process: ""
   });
 
-  const handleComponent1Data = (data) => {
+  const [formData, setFormData] = useState(
+    
+    {
+      "RegNo": currentAppCount,
+     
+      // today's date
+      "Dte": currentDate,
+
+      "Stud_info": {StudentInfo},
+     
+      "Services": {serviceInfo},
+
+      "Invoice": {
+        "Feild": [
+          {
+            "name": String,
+            "date": {
+              "$dateToString": { "format": "%d/%m/%Y", "date": "$$NOW" }
+            },
+            "Cash": Boolean,
+            "Online": Boolean,
+            "Charges": Number
+          }
+          /* ... More fields as needed ... */
+        ],
+        "Total": {
+          "$sum": "$Feild.Charges"
+        },
+        "Additional Remarks": String
+      }
+    }
+
+  );
+
+  const handleStudentInfo = (data) => {
     setFormData((prevData) => ({
       ...prevData,
       Stud_info: { ...prevData.Stud_info, ...data },
@@ -17,14 +102,19 @@ function Submit() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    alert(JSON.stringify(formData, null, 2));
+    // console.log(JSON.stringify(formData, null, 2));
   };
 
   return (
     <>
-      <StudentInfo onDataUpdate={handleComponent1Data} />
+      <StudentInfo onDataUpdate={handleStudentInfo} />
       <hr />
-      <Services />
+
+      <Services 
+        serviceInfo={serviceInfo} 
+        setServiceInfo={setServiceInfo}
+      />
+      
       <hr />
       <section className="container">
         Signature of the student and, if the student is a minor, a parent or

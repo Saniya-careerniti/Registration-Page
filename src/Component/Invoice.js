@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid, Checkbox } from "@mui/material";
 import moment from "moment";
+
 function Invoice(props) {
-  let count = 1;
 
   return (
     <>
