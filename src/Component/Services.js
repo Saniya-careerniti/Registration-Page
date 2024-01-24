@@ -1,17 +1,60 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import Chip from "@mui/material/Chip";
-import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import { Checkbox, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import Invoice from "./Invoice";
+import GuidanceCounselling from "./GuidanceCounselling";
 
-function Services() {
+function Services({ onDataUpdate }) {
+  const [initialServiceInfo, setInitialServiceInfo] = useState({
 
-  const [selectedService, setSelectedService] = useState([]);
-  const [serviceName, setServiceName] = useState([]);
+       Admission_Process:[],
+       Opted:{
+         Career_Guidace:{
+          Opt:false,
+          Dilevered:false,
+          remark:""
+         },
+         Career_Counselling:{
+          Opt:false,
+          Dilevered:false,
+          remark:""
+         },
+         Entrance_Guidace:{
+          Opt:false,
+          Dilevered:false,
+          remark:""
+         },
+         Entrance_Counselling:{
+          Opt:false,
+          Dilevered:false,
+          remark:""
+         },
+         Admission_Guidace:{
+          Opt:false,
+          Dilevered:false,
+          remark:""
+         },
+         Admission_Counselling:{
+          Opt:false,
+          Dilevered:false,
+          remark:""
+         },
+       },
 
+       Additional_Process:"",
+   
+  });
+
+  const ServiceNames=[
+    "Career Guidance",
+    "Career Counselling",
+    "Entrance Guidance",
+    "Entrance Counselling",
+    "Admission Guidance",
+    " Counselling",
+  ]
   const services = [
     "Maharashtra Medical Admission Process",
     "All India Medical Admission Process",
@@ -27,34 +70,39 @@ function Services() {
     "BITSAT Admission Process",
     "Other Private Institutes Admission Process",
   ];
-  
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setSelectedService(typeof value === "string" ? value.split(",") : value);
+
+
+  const handleFieldChange = (fieldName, value) => {
+    setInitialServiceInfo((prevInfo) => ({
+      ...prevInfo,
+      [fieldName]: value,
+    }));
   };
 
+  
+  
+
   useEffect(() => {
-    setServiceName(selectedService);
-  }, [selectedService]);
- 
-    return ( 
-        <>
-        <section className="container">
-          <div className="student-info">* Services</div>
-          <div className="multi-select">
-           <span  className="Admission-pro"> Admission Process:</span>
+    // This effect will run whenever any field in studentInfo changes
+    onDataUpdate(initialServiceInfo);
+  }, [initialServiceInfo]);
+
+  return (
+    <>
+      <section className="container">
+        <div className="student-info">* Services</div>
+        <div className="multi-select">
+          <span className="Admission-pro"> Admission Process:</span>
           <Select
-           className="dropdown"
+            className="dropdown"
             labelId="demo-multiple-chip-label"
             id="demo-multiple-chip"
             multiple
-            value={selectedService}
-            onChange={handleChange}
+            value={initialServiceInfo.Admission_Process}
+            onChange={(e) => {
+             handleFieldChange("Admission_Process", e.target.value);
+            }}
             input={<OutlinedInput label="Name" />}
-            
-              
           >
             {services.map((name) => (
               <MenuItem key={name} value={name}>
@@ -62,118 +110,36 @@ function Services() {
               </MenuItem>
             ))}
           </Select>
+        </div>
+        <div className="services">
+          <Grid container spacing={4}>
+            <Grid item xs={4}></Grid>
+            <Grid item xs={1}>
+              Opt
+            </Grid>
+            <Grid item xs={1}>
+              Delivered
+            </Grid>
+            <Grid item xs={6}>
+              Remark
+            </Grid>
+          </Grid>
+        </div>
 
-       
-          </div>
-          <div className="services">
-            <Grid container spacing={4}>
-              <Grid item xs={4}></Grid>
-              <Grid item xs={1}>
-                Opt
-              </Grid>
-              <Grid item xs={1}>
-                Delivered
-              </Grid>
-              <Grid item xs={6}>
-                Remark
-              </Grid>
-            </Grid>
-          </div>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">1.Career Guidance</span>
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox/>
-            </Grid>
-            <Grid item xs={6}>
-              <input type="text" className="remark"></input>
-            </Grid>
-          </Grid>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">2.Career Counselling</span>
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={6}>
-              <input type="text" className="remark"></input>
-            </Grid>
-          </Grid>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">3.Entrance Guidance</span>
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={6}>
-              <input type="text" className="remark"></input>
-            </Grid>
-          </Grid>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">4.Entrance Counselling</span>
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-
-            <Grid item xs={6}>
-              <input type="text" className="remark"></input>
-            </Grid>
-          </Grid>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">5.Admission Guidance</span>
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-
-            <Grid item xs={6}>
-              <input type="text" className="remark"></input>
-            </Grid>
-          </Grid>
-          <Grid container spacing={4}>
-            <Grid item xs={4}>
-              <span className="service-title">6.Admission Counselling</span>
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-            <Grid item xs={1}>
-              <Checkbox />
-            </Grid>
-
-            <Grid item xs={6}>
-              <input type="text" className="remark"></input>
-            </Grid>
-          </Grid>
-          Additional Process:
-          <input type="text" className="additional"></input>
-        </section>
-        <hr/>
-        <Invoice service={serviceName}/>
-        </>
-        
-     );
+        {
+          ServiceNames.map((name,index)=>(
+             <GuidanceCounselling id={index+1} title={name} service_Info={initialServiceInfo} handleFieldChange={handleFieldChange}/>
+          ))
+        }
+      
+   
+        Additional Process:
+        <input type="text" className="additional"></input>
+      </section>
+      <hr />
+      <Invoice service={initialServiceInfo.Admission_Process} />
+    </>
+  );
 }
 
 export default Services;

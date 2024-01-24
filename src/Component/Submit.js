@@ -6,25 +6,38 @@ import Invoice from "./Invoice";
 function Submit() {
   const [formData, setFormData] = useState({
     Stud_info: {},
+    Services: {},
   });
 
-  const handleComponent1Data = (data) => {
+  const handleStudentInfo = (data) => {
     setFormData((prevData) => ({
       ...prevData,
       Stud_info: { ...prevData.Stud_info, ...data },
     }));
   };
 
+
+  const handleServices = (data) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      Services: { ...prevData.Services, ...data },
+    }));
+  };
   const handleClick = (e) => {
     e.preventDefault();
-    alert(JSON.stringify(formData, null, 2));
+    console.log("Form Data:", formData);
+    const allData = {
+      ...formData.Stud_info,
+      ...formData.Services,
+    };
+    alert(JSON.stringify(allData, null, 2));
   };
 
   return (
     <>
-      <StudentInfo onDataUpdate={handleComponent1Data} />
+      <StudentInfo onDataUpdate={handleStudentInfo} />
       <hr />
-      <Services />
+      <Services onDataUpdate={handleServices}/>
       <hr />
       <section className="container">
         Signature of the student and, if the student is a minor, a parent or

@@ -56,7 +56,7 @@ function StudentInfo({ onDataUpdate }) {
               value={studentInfo.name}
               onChange={(e) => {
                 handleFieldChange('name', e.target.value);
-                onDataUpdate();
+       
               }}
             />
           </Grid>
@@ -68,7 +68,7 @@ function StudentInfo({ onDataUpdate }) {
               value={studentInfo.dob}
               onChange={(e) => {
                 handleFieldChange('dob', e.target.value);
-                onDataUpdate();
+           
               }}
             />
           </Grid>
@@ -95,7 +95,7 @@ function StudentInfo({ onDataUpdate }) {
               value={studentInfo.pcontact}
               onChange={(e) => {
                 handleFieldChange('pcontact', e.target.value);
-                onDataUpdate();
+          
               }}
             />
           </Grid>
@@ -110,7 +110,7 @@ function StudentInfo({ onDataUpdate }) {
               value={studentInfo.stdEmail}
               onChange={(e) => {
                 handleFieldChange('stdEmail', e.target.value);
-                onDataUpdate();
+       
               }}
             />
           </Grid>
@@ -122,7 +122,7 @@ function StudentInfo({ onDataUpdate }) {
               value={studentInfo.pemail}
               onChange={(e) => {
                 handleFieldChange('pemail', e.target.value);
-                onDataUpdate();
+          
               }}
             />
           </Grid>
@@ -139,7 +139,7 @@ function StudentInfo({ onDataUpdate }) {
               value={studentInfo.gender}
               onChange={(e) => {
                 handleFieldChange('gender', e.target.value);
-                onDataUpdate();
+              
               }}
             >
               Gender:
@@ -159,7 +159,7 @@ function StudentInfo({ onDataUpdate }) {
               value={studentInfo.status}
               onChange={(e) => {
                 handleFieldChange('status', e.target.value);
-                onDataUpdate();
+               
               }}
             >
               Status:
