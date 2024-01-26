@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import StudentInfo from "./StudentInfo";
 import Services from "./Services";
 import Invoice from "./Invoice";
+
 function Submit() {
   const [formData, setFormData] = useState({
     Stud_info: {},
@@ -23,6 +24,7 @@ function Submit() {
       Services: { ...prevData.Services, ...data },
     }));
   };
+
   const handleClick = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
@@ -35,10 +37,12 @@ function Submit() {
 
   return (
     <>
-      <StudentInfo onDataUpdate={handleStudentInfo} />
+      <StudentInfo onDataUpdate={handleStudentInfo} />      // working fine
       <hr />
-      <Services onDataUpdate={handleServices}/>
+
+      <Services onDataUpdate={handleServices}/>       // not working as per expectation
       <hr />
+     
       <section className="container">
         Signature of the student and, if the student is a minor, a parent or
         guardian:

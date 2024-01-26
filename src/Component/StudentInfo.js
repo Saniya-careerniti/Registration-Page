@@ -5,33 +5,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import moment from 'moment';
 
-function StudentInfo({ onDataUpdate }) {
-  const [studentInfo, setStudentInfo] = useState({
-    name: '',
-    dob: '',
-    stdContact: '',
-    pcontact: '',
-    stdEmail: '',
-    pemail: '',
-    gender: '',
-    status: '',
-    loc: '',
-    colName: '',
-  });
+function StudentInfo({studentInfo, handleStudentInfoChange , location, setLocation, locationList}) {
 
-  const locationOptions = ["Satara", "Sangli", "Karad", "Kolhapur", "Pune", "Nashik", "Other"];
-
-  const handleFieldChange = (fieldName, value) => {
-    setStudentInfo((prevInfo) => ({
-      ...prevInfo,
-      [fieldName]: value,
-    }));
-  };
-
-  useEffect(() => {
-    // This effect will run whenever any field in studentInfo changes
-    onDataUpdate(studentInfo);
-  }, [studentInfo]);
 
   return (
     <>
@@ -55,7 +30,7 @@ function StudentInfo({ onDataUpdate }) {
               className="input"
               value={studentInfo.name}
               onChange={(e) => {
-                handleFieldChange('name', e.target.value);
+                handleStudentInfoChange('name', e.target.value);
        
               }}
             />
@@ -67,7 +42,7 @@ function StudentInfo({ onDataUpdate }) {
               className="input"
               value={studentInfo.dob}
               onChange={(e) => {
-                handleFieldChange('dob', e.target.value);
+                handleStudentInfoChange('dob', e.target.value);
            
               }}
             />
@@ -82,8 +57,7 @@ function StudentInfo({ onDataUpdate }) {
               className="input"
               value={studentInfo.stdContact}
               onChange={(e) => {
-                handleFieldChange('stdContact', e.target.value);
-                onDataUpdate();
+                handleStudentInfoChange('stdContact', e.target.value);
               }}
             />
           </Grid>
@@ -94,7 +68,7 @@ function StudentInfo({ onDataUpdate }) {
               className="input"
               value={studentInfo.pcontact}
               onChange={(e) => {
-                handleFieldChange('pcontact', e.target.value);
+                handleStudentInfoChange('pcontact', e.target.value);
           
               }}
             />
@@ -109,7 +83,7 @@ function StudentInfo({ onDataUpdate }) {
               className="input"
               value={studentInfo.stdEmail}
               onChange={(e) => {
-                handleFieldChange('stdEmail', e.target.value);
+                handleStudentInfoChange('stdEmail', e.target.value);
        
               }}
             />
@@ -121,7 +95,7 @@ function StudentInfo({ onDataUpdate }) {
               className="input"
               value={studentInfo.pemail}
               onChange={(e) => {
-                handleFieldChange('pemail', e.target.value);
+                handleStudentInfoChange('pemail', e.target.value);
           
               }}
             />
@@ -138,7 +112,7 @@ function StudentInfo({ onDataUpdate }) {
               aria-placeholder="Gender"
               value={studentInfo.gender}
               onChange={(e) => {
-                handleFieldChange('gender', e.target.value);
+                handleStudentInfoChange('gender', e.target.value);
               
               }}
             >
@@ -158,7 +132,7 @@ function StudentInfo({ onDataUpdate }) {
               aria-placeholder="Status"
               value={studentInfo.status}
               onChange={(e) => {
-                handleFieldChange('status', e.target.value);
+                handleStudentInfoChange('status', e.target.value);
                
               }}
             >
@@ -179,13 +153,16 @@ function StudentInfo({ onDataUpdate }) {
             className="input"
             value={studentInfo.loc}
             onChange={(e) => {
-              handleFieldChange('loc', e.target.value);
+              // handleStudentInfoChange('loc', e.target.value);
+              setLocation(e.target.value);
             }}
           >
             <option value="">Select Location</option>
-            {locationOptions.map((loc) => (
-              <option key={loc} value={loc}>{loc}</option>
-            ))}
+            {locationList.map((loc, index) => (
+            <option key={index} value={loc}>
+              {loc}
+            </option>
+          ))}
           </select>
         </Grid>
 
@@ -196,7 +173,7 @@ function StudentInfo({ onDataUpdate }) {
             className="input"
             value={studentInfo.colName}
             onChange={(e) => {
-              handleFieldChange('colName', e.target.value);
+              handleStudentInfoChange('colName', e.target.value);
             }}
           />
         </Grid>

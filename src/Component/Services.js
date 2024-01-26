@@ -2,50 +2,12 @@ import React, { useEffect, useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import { Grid } from "@mui/material";
+import { div } from "@mui/material";
 import Invoice from "./Invoice";
 import GuidanceCounselling from "./GuidanceCounselling";
 
 function Services({ onDataUpdate }) {
-  const [initialServiceInfo, setInitialServiceInfo] = useState({
-
-       Admission_Process:[],
-       Opted:{
-         Career_Guidace:{
-          Opt:false,
-          Dilevered:false,
-          remark:""
-         },
-         Career_Counselling:{
-          Opt:false,
-          Dilevered:false,
-          remark:""
-         },
-         Entrance_Guidace:{
-          Opt:false,
-          Dilevered:false,
-          remark:""
-         },
-         Entrance_Counselling:{
-          Opt:false,
-          Dilevered:false,
-          remark:""
-         },
-         Admission_Guidace:{
-          Opt:false,
-          Dilevered:false,
-          remark:""
-         },
-         Admission_Counselling:{
-          Opt:false,
-          Dilevered:false,
-          remark:""
-         },
-       },
-
-       Additional_Process:"",
-   
-  });
+  const [initialServiceInfo, setInitialServiceInfo] = useState();
 
   const ServiceNames=[
     "Career Guidance",
@@ -53,8 +15,9 @@ function Services({ onDataUpdate }) {
     "Entrance Guidance",
     "Entrance Counselling",
     "Admission Guidance",
-    " Counselling",
+    "Admission Counselling",
   ]
+
   const services = [
     "Maharashtra Medical Admission Process",
     "All India Medical Admission Process",
@@ -112,18 +75,18 @@ function Services({ onDataUpdate }) {
           </Select>
         </div>
         <div className="services">
-          <Grid container spacing={4}>
-            <Grid item xs={4}></Grid>
-            <Grid item xs={1}>
+          <div container spacing={4}>
+            <div item xs={4}></div>
+            <div item xs={1}>
               Opt
-            </Grid>
-            <Grid item xs={1}>
+            </div>
+            <div item xs={1}>
               Delivered
-            </Grid>
-            <Grid item xs={6}>
+            </div>
+            <div item xs={6}>
               Remark
-            </Grid>
-          </Grid>
+            </div>
+          </div>
         </div>
 
         {
